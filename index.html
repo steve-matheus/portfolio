@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Steve Matheus Mendes Lima – Desenvolvedor em formação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FB; --surface:#FFFFFF; --ink:#16203A; --muted:#566079; --line:#D9DFEC;
+  --accent:#2B50E6; --accent-ink:#FFFFFF; --ok:#13795B; --ok-bg:#DDF3EA;
+  --wip:#8A5A00; --wip-bg:#FFF0CF;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1424; --surface:#161E33; --ink:#E8ECF7; --muted:#9AA5C0; --line:#28324E;
+    --accent:#7C95FF; --accent-ink:#0E1424; --ok:#6FE0B8; --ok-bg:#12332A;
+    --wip:#F2C566; --wip-bg:#3A2D0E; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1424; --surface:#161E33; --ink:#E8ECF7; --muted:#9AA5C0; --line:#28324E;
+  --accent:#7C95FF; --accent-ink:#0E1424; --ok:#6FE0B8; --ok-bg:#12332A;
+  --wip:#F2C566; --wip-bg:#3A2D0E; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:860px;margin:0 auto;padding:0 1.25rem}
+nav{display:flex;gap:1.25rem;flex-wrap:wrap;padding:1.25rem 0;font-weight:500}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+header.hero{padding:3rem 0 3.5rem}
+.hero h1{font-size:clamp(2.6rem,9vw,5.2rem);font-weight:800;letter-spacing:-.03em;max-width:14ch}
+.hero p.lead{font-size:1.25rem;max-width:34em;color:var(--muted);margin:1.5rem 0 0}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+section{padding:3rem 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:.5rem}
+.sub{color:var(--muted);margin:0 0 2rem;max-width:40em}
+
+/* Log de aprendizado: o destaque da página */
+.log{list-style:none;margin:0;padding:0 0 0 1.4rem;border-left:3px solid var(--line)}
+.log li{position:relative;padding:0 0 1.6rem 1.2rem}
+.log li::before{content:"";position:absolute;left:-2.1rem;top:.45rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.log li.now::before{background:var(--accent)}
+.log time{display:block;font-weight:600;color:var(--accent)}
+.log h3{font-size:1.2rem;margin:.1rem 0 .25rem}
+.log p{margin:0;color:var(--muted)}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem}
+.box h3{font-size:1.1rem;margin-bottom:.75rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin:0;padding:0;list-style:none}
+.tags li{padding:.2rem .65rem;border-radius:999px;font-size:.92rem;font-weight:500;background:var(--ok-bg);color:var(--ok)}
+.tags.wip li{background:var(--wip-bg);color:var(--wip)}
+
+.plan{display:grid;gap:1rem}
+.idea{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem;display:grid;gap:.4rem}
+.idea .top{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}
+.idea h3{font-size:1.2rem}
+.status{font-size:.85rem;font-weight:600;padding:.15rem .6rem;border-radius:999px;background:var(--wip-bg);color:var(--wip)}
+.idea p{margin:0;color:var(--muted)}
+.idea .stack{font-size:.95rem;color:var(--ink)}
+
+.about{display:grid;gap:1rem;max-width:40em}
+.about p{margin:0}
+footer{padding:3rem 0 4rem;border-top:1px solid var(--line)}
+footer h2{font-size:2rem;margin-bottom:.5rem}
+.links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.25rem;padding:0;list-style:none;font-weight:600}
+.small{color:var(--muted);font-size:.9rem;margin-top:2.5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Principal">
+    <a href="#aprendizado">Aprendizado</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#proximos">Projetos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Steve Matheus Mendes Lima, desenvolvedor em formação.</h1>
+    <p class="lead">Curso Engenharia de Computação em Fortaleza (CE) desde 2022. Meus projetos são privados, mas posso mostrá-los em uma conversa. Procuro uma oportunidade de estágio ou vaga júnior em backend, desenvolvimento web e desenvolvimento de aplicativos.</p>
+    <div class="cta">
+      <a class="btn primary" href="#contato">Falar comigo</a>
+      <a class="btn ghost" href="https://github.com/steve-matheus">Ver meu GitHub</a>
+    </div>
+  </header>
+</div>
+
+<main>
+  <section id="aprendizado">
+    <div class="wrap">
+      <h2>O que já percorri</h2>
+      <p class="sub">Meu caminho até aqui, do mais antigo ao mais recente. Troque pelos seus cursos e datas reais.</p>
+      <ol class="log">
+        <li>
+          <time>2022</time>
+          <h3>Início da graduação em Engenharia de Computação</h3>
+          <p>Comecei o curso no IFCE, em Fortaleza (CE).</p>
+        </li>
+        <li>
+          <time>2023</time>
+          <h3>Git e GitHub</h3>
+          <p>Aprendi a versionar meus códigos com commits e branches e a guardá-los no GitHub.</p>
+        </li>
+        <li class="now">
+          <time>Agora</time>
+          <h3>Estudando Java</h3>
+          <p>Meta das próximas semanas: terminar meus estudos de Java e abrir o código de um projeto no GitHub.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="wrap">
+      <h2>Habilidades</h2>
+      <p class="sub">Separei o que já uso do que ainda estou aprendendo, para você saber exatamente onde estou.</p>
+      <div class="skills">
+        <div class="box">
+          <h3>Já uso</h3>
+          <ul class="tags"><li>Python</li><li>C</li><li>C++</li><li>Git</li><li>GitHub</li></ul>
+        </div>
+        <div class="box">
+          <h3>Estudando agora</h3>
+          <ul class="tags wip"><li>Java</li></ul>
+        </div>
+        <div class="box">
+          <h3>Fora da programação</h3>
+          <ul class="tags"><li>Comunicação</li><li>Trabalho em equipe</li><li>[Sua experiência anterior]</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proximos">
+    <div class="wrap">
+      <h2>Projetos privados</h2>
+      <p class="sub">O código destes projetos está em repositórios privados. Posso mostrar o código e explicar as decisões técnicas em uma conversa.</p>
+      <div class="plan">
+        <article class="idea">
+          <div class="top"><h3>Gerenciador de tarefas no terminal</h3><span class="status">Privado</span></div>
+          <p>Adicionar, concluir e filtrar tarefas pela linha de comando, com os dados salvos em arquivo.</p>
+          <p class="stack">Python, C e C++</p>
+        </article>
+        <article class="idea">
+          <div class="top"><h3>Jogo da velha com IA</h3><span class="status">Privado</span></div>
+          <p>Jogo no terminal em que o computador escolhe a melhor jogada com o algoritmo minimax.</p>
+          <p class="stack">Python, C e C++</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="wrap">
+      <h2>Sobre mim</h2>
+      <div class="about">
+        <p>Tenho 36 anos, moro em Fortaleza (CE) e estudo Engenharia de Computação. Escolhi a área porque gosto de desafios e de resolver problemas.</p>
+        <p>Aprendo melhor construindo. Por isso, meu foco agora é transformar o que estudo em projetos pequenos, bem explicados e publicados.</p>
+        <p>No tempo livre, gosto de jogos.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <h2>Vamos conversar?</h2>
+    <p class="sub">Aceito conversas sobre estágio, vaga júnior ou mentoria. Respondo em até dois dias.</p>
+    <ul class="links">
+      <li><a href="mailto:steve.matheus4@gmail.com">steve.matheus4@gmail.com</a></li>
+      <li><a href="https://linkedin.com/in/steve-mendes-a18102433">LinkedIn: Steve Mendes</a></li>
+      <li><a href="https://github.com/steve-matheus">GitHub: Steve Matheus</a></li>
+    </ul>
+    <p class="small">© 2026 Steve Matheus Mendes Lima</p>
+  </div>
+</footer>
+</body>
+</html>
